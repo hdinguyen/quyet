@@ -16,6 +16,13 @@
 		181D12A716EE256000F9DB5F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 181D12A616EE256000F9DB5F /* Default.png */; };
 		181D12A916EE256000F9DB5F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181D12A816EE256000F9DB5F /* Default@2x.png */; };
 		181D12AB16EE256000F9DB5F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181D12AA16EE256000F9DB5F /* Default-568h@2x.png */; };
+		181D12BB16EE261100F9DB5F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D12B916EE261100F9DB5F /* MainViewController.m */; };
+		181D12BC16EE261100F9DB5F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D12BA16EE261100F9DB5F /* MainViewController.xib */; };
+		181D12C016EE264A00F9DB5F /* iCoreGUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D12BF16EE264A00F9DB5F /* iCoreGUIController.m */; };
+		18C20ADB16F2072E00A353C3 /* lighthub.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADA16F2072E00A353C3 /* lighthub.png */; };
+		18C20ADD16F2073F00A353C3 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADC16F2073F00A353C3 /* light.png */; };
+		18C20ADF16F2074E00A353C3 /* fan.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADE16F2074E00A353C3 /* fan.png */; };
+		18C20AE116F2075B00A353C3 /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20AE016F2075B00A353C3 /* door.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +39,15 @@
 		181D12A616EE256000F9DB5F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		181D12A816EE256000F9DB5F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		181D12AA16EE256000F9DB5F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		181D12B816EE261100F9DB5F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = View/MainViewController.h; sourceTree = "<group>"; };
+		181D12B916EE261100F9DB5F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = View/MainViewController.m; sourceTree = "<group>"; };
+		181D12BA16EE261100F9DB5F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = View/MainViewController.xib; sourceTree = "<group>"; };
+		181D12BE16EE264A00F9DB5F /* iCoreGUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCoreGUIController.h; sourceTree = "<group>"; };
+		181D12BF16EE264A00F9DB5F /* iCoreGUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCoreGUIController.m; sourceTree = "<group>"; };
+		18C20ADA16F2072E00A353C3 /* lighthub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighthub.png; sourceTree = "<group>"; };
+		18C20ADC16F2073F00A353C3 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
+		18C20ADE16F2074E00A353C3 /* fan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fan.png; sourceTree = "<group>"; };
+		18C20AE016F2075B00A353C3 /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,9 @@
 		181D129A16EE255F00F9DB5F /* Smarthome */ = {
 			isa = PBXGroup;
 			children = (
+				181D12BD16EE263700F9DB5F /* Core */,
+				181D12B216EE25AD00F9DB5F /* Data */,
+				181D12B116EE25A700F9DB5F /* View */,
 				181D12A316EE256000F9DB5F /* AppDelegate.h */,
 				181D12A416EE256000F9DB5F /* AppDelegate.m */,
 				181D129B16EE255F00F9DB5F /* Supporting Files */,
@@ -97,6 +116,36 @@
 				181D12AA16EE256000F9DB5F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		181D12B116EE25A700F9DB5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18C20ADA16F2072E00A353C3 /* lighthub.png */,
+				18C20ADC16F2073F00A353C3 /* light.png */,
+				18C20AE016F2075B00A353C3 /* door.png */,
+				18C20ADE16F2074E00A353C3 /* fan.png */,
+				181D12B816EE261100F9DB5F /* MainViewController.h */,
+				181D12B916EE261100F9DB5F /* MainViewController.m */,
+				181D12BA16EE261100F9DB5F /* MainViewController.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		181D12B216EE25AD00F9DB5F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		181D12BD16EE263700F9DB5F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				181D12BE16EE264A00F9DB5F /* iCoreGUIController.h */,
+				181D12BF16EE264A00F9DB5F /* iCoreGUIController.m */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +203,11 @@
 				181D12A716EE256000F9DB5F /* Default.png in Resources */,
 				181D12A916EE256000F9DB5F /* Default@2x.png in Resources */,
 				181D12AB16EE256000F9DB5F /* Default-568h@2x.png in Resources */,
+				181D12BC16EE261100F9DB5F /* MainViewController.xib in Resources */,
+				18C20ADB16F2072E00A353C3 /* lighthub.png in Resources */,
+				18C20ADD16F2073F00A353C3 /* light.png in Resources */,
+				18C20ADF16F2074E00A353C3 /* fan.png in Resources */,
+				18C20AE116F2075B00A353C3 /* door.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +220,8 @@
 			files = (
 				181D12A116EE256000F9DB5F /* main.m in Sources */,
 				181D12A516EE256000F9DB5F /* AppDelegate.m in Sources */,
+				181D12BB16EE261100F9DB5F /* MainViewController.m in Sources */,
+				181D12C016EE264A00F9DB5F /* iCoreGUIController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +338,7 @@
 				181D12B016EE256000F9DB5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
