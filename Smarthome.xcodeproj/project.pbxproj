@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1800351D16F8B8D400336EA3 /* NSSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800351C16F8B8D400336EA3 /* NSSQLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1800351F16F8BD3200336EA3 /* SmartHome.db in Resources */ = {isa = PBXBuildFile; fileRef = 1800351E16F8BD3200336EA3 /* SmartHome.db */; };
 		181D129516EE255F00F9DB5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181D129416EE255F00F9DB5F /* UIKit.framework */; };
 		181D129716EE255F00F9DB5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181D129616EE255F00F9DB5F /* Foundation.framework */; };
 		181D129916EE255F00F9DB5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181D129816EE255F00F9DB5F /* CoreGraphics.framework */; };
@@ -19,6 +21,8 @@
 		181D12BB16EE261100F9DB5F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D12B916EE261100F9DB5F /* MainViewController.m */; };
 		181D12BC16EE261100F9DB5F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D12BA16EE261100F9DB5F /* MainViewController.xib */; };
 		181D12C016EE264A00F9DB5F /* iCoreGUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D12BF16EE264A00F9DB5F /* iCoreGUIController.m */; };
+		1837718316F4CB500057AC88 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1837718216F4CB500057AC88 /* libsqlite3.0.dylib */; };
+		1837718616F4CBA60057AC88 /* iData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837718516F4CBA60057AC88 /* iData.m */; };
 		18C20ADB16F2072E00A353C3 /* lighthub.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADA16F2072E00A353C3 /* lighthub.png */; };
 		18C20ADD16F2073F00A353C3 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADC16F2073F00A353C3 /* light.png */; };
 		18C20ADF16F2074E00A353C3 /* fan.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADE16F2074E00A353C3 /* fan.png */; };
@@ -26,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1800351B16F8B8D400336EA3 /* NSSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSQLite.h; sourceTree = "<group>"; };
+		1800351C16F8B8D400336EA3 /* NSSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSQLite.m; sourceTree = "<group>"; };
+		1800351E16F8BD3200336EA3 /* SmartHome.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartHome.db; sourceTree = "<group>"; };
 		181D129116EE255F00F9DB5F /* Smarthome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smarthome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181D129416EE255F00F9DB5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		181D129616EE255F00F9DB5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +51,9 @@
 		181D12BA16EE261100F9DB5F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = View/MainViewController.xib; sourceTree = "<group>"; };
 		181D12BE16EE264A00F9DB5F /* iCoreGUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCoreGUIController.h; sourceTree = "<group>"; };
 		181D12BF16EE264A00F9DB5F /* iCoreGUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCoreGUIController.m; sourceTree = "<group>"; };
+		1837718216F4CB500057AC88 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		1837718416F4CBA60057AC88 /* iData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iData.h; sourceTree = "<group>"; };
+		1837718516F4CBA60057AC88 /* iData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iData.m; sourceTree = "<group>"; };
 		18C20ADA16F2072E00A353C3 /* lighthub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighthub.png; sourceTree = "<group>"; };
 		18C20ADC16F2073F00A353C3 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
 		18C20ADE16F2074E00A353C3 /* fan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fan.png; sourceTree = "<group>"; };
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1837718316F4CB500057AC88 /* libsqlite3.0.dylib in Frameworks */,
 				181D129516EE255F00F9DB5F /* UIKit.framework in Frameworks */,
 				181D129716EE255F00F9DB5F /* Foundation.framework in Frameworks */,
 				181D129916EE255F00F9DB5F /* CoreGraphics.framework in Frameworks */,
@@ -84,6 +95,7 @@
 		181D129316EE255F00F9DB5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1837718216F4CB500057AC88 /* libsqlite3.0.dylib */,
 				181D129416EE255F00F9DB5F /* UIKit.framework */,
 				181D129616EE255F00F9DB5F /* Foundation.framework */,
 				181D129816EE255F00F9DB5F /* CoreGraphics.framework */,
@@ -135,6 +147,11 @@
 		181D12B216EE25AD00F9DB5F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1800351B16F8B8D400336EA3 /* NSSQLite.h */,
+				1800351C16F8B8D400336EA3 /* NSSQLite.m */,
+				1837718416F4CBA60057AC88 /* iData.h */,
+				1837718516F4CBA60057AC88 /* iData.m */,
+				1800351E16F8BD3200336EA3 /* SmartHome.db */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -208,6 +225,7 @@
 				18C20ADD16F2073F00A353C3 /* light.png in Resources */,
 				18C20ADF16F2074E00A353C3 /* fan.png in Resources */,
 				18C20AE116F2075B00A353C3 /* door.png in Resources */,
+				1800351F16F8BD3200336EA3 /* SmartHome.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +240,8 @@
 				181D12A516EE256000F9DB5F /* AppDelegate.m in Sources */,
 				181D12BB16EE261100F9DB5F /* MainViewController.m in Sources */,
 				181D12C016EE264A00F9DB5F /* iCoreGUIController.m in Sources */,
+				1837718616F4CBA60057AC88 /* iData.m in Sources */,
+				1800351D16F8B8D400336EA3 /* NSSQLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

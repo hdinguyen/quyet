@@ -7,6 +7,7 @@
 //
 
 #import "iCoreGUIController.h"
+#import "iData.h"
 
 @implementation iCoreGUIController
 
@@ -31,6 +32,8 @@
 
 -(void)start
 {
+    iData* dt = [[iData alloc]initDataAccess];
+    [dt test];
     _mainView = [[MainViewController alloc]init];
     [_mainWindow addSubview:_mainView.view];
 }

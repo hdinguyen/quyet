@@ -63,6 +63,7 @@
     _iconAddInScreen = [[NSMutableArray alloc]init];
     _viewState = 0;
     _currentTouch = nil;
+    [_floorAdd setEnabled:NO];
     return self;
 }
 
@@ -173,6 +174,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"Touch began");
+    //[_floorField resignFirstResponder];
     UITouch* touch = [[event allTouches] anyObject];
     CGPoint touchPoint = [touch locationInView:touch.view];
     for (UIImageView* iconView in _iconAddInScreen)
@@ -201,13 +203,24 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    NSLog(@"Begin update");
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.center = CGPointMake(320/2, 480/2-216);
+    }];
+    [_floorAdd setEnabled:YES];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"end update");
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.center = CGPointMake(320/2, 480/2);
+    }];
 }
 
+
+
 - (IBAction)AddFloor:(id)sender {
+    [_floorArr addObject:_floorField.text];
+    [_floorField setText:@""];
+    [_floorAdd setEnabled:NO];
+    [_floorTable reloadData];
 }
 @end
