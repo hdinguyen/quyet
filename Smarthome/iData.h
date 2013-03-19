@@ -19,5 +19,9 @@
 -(id)initDataAccess;
 -(BOOL)createEditableCopyOfDatabaseIfNeeded;
 -(void)test;
-
+-(BOOL)insertToFloorWithName:(NSString*)floorName;
+-(void)removeFloorWithName:(NSString*)floorName;
+-(NSArray*)getFloorList;
+-(NSArray*)getItemList;
+-(void) addNewIcon:(NSString*)iconName toFloor:(NSString*)floorName atPosition:(CGPoint)centerPoint;
 @end
