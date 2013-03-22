@@ -11,6 +11,21 @@
 
 @implementation iData
 
+
++(id)shareInstance
+{
+    static iData* shareObj = nil;
+    if (nil != shareObj) {
+        return shareObj;
+    }
+    
+    static dispatch_once_t pred;        // Lock
+    dispatch_once(&pred, ^{             // This code is called at most once per app
+        shareObj = [[iData alloc] initDataAccess];
+    });
+    return shareObj;
+}
+
 -(id)initDataAccess {
     self = [super init];
     if (![self createEditableCopyOfDatabaseIfNeeded])
@@ -95,10 +110,13 @@
         return NO;
     }
     NSDictionary *lastDicItem = [sqlResult objectAtIndex:[sqlResult count] - 1];
-    NSInteger lastId = (int)[lastDicItem valueForKey:@"FLOOR_ID"];
+    NSInteger lastId = [[lastDicItem valueForKey:@"ID"] intValue];
+
     
     sql = [NSString stringWithFormat:@"insert into FLOOR values (%d , '%@')",lastId+1, floorName];
     [sqlite executeQuery:sql];
+    
+    NSLog(@"Add floor success %d", lastId);
     return YES;
 }
 
@@ -110,6 +128,6 @@
 
 -(void)addNewIcon:(NSString *)iconName toFloor:(NSString *)floorName atPosition:(CGPoint)centerPoint
 {
-    sql = [NSString stringWithFormat:@"insert into ",floorName];
+    //sql = [NSString stringWithFormat:@"insert into ",floorName];
 }
 @end

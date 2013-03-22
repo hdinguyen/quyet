@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    data = [iData shareInstance];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -50,12 +51,12 @@
     _itemTable.tag = ITEM_TABLE;
     [self.view addSubview:_itemTable];
     
-    _floorArr = [[NSMutableArray alloc]initWithObjects:@"Floor 1", nil];
+    _floorArr = [data getFloorList];
     _itemArr = [[NSMutableArray alloc]initWithObjects:@"Den 01", @"Den 02", @"Quat", @"Cua", nil];
     _iconArr = [[NSMutableArray alloc]initWithObjects:@"lighthub.png",@"light.png",@"door.png",@"fan.png", nil];
     _floorViewArr = [[NSMutableArray alloc]init];
     for (int i = 0; i < _floorArr.count; ++i) {
-        [self AddViewForFloor:i];
+        [self AddViewForFloor];
     }
     NSLog(@"count: %d", [_floorViewArr count]);
     _currentView = [_floorViewArr objectAtIndex:0];
@@ -64,6 +65,9 @@
     _viewState = 0;
     _currentTouch = nil;
     [_floorAdd setEnabled:NO];
+    
+    _colorTmp = [[NSArray alloc]initWithObjects:[UIColor blackColor],[UIColor blueColor], [UIColor whiteColor], nil];
+    iColor = 0;
     return self;
 }
 
@@ -73,7 +77,7 @@
     {
         return [_itemArr count];
     }
-    return [_floorArr count];
+    return [[data getFloorList] count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,10 +99,10 @@
     return cell;
 }
 
--(void)AddViewForFloor:(NSInteger)floorIndex
+-(void)AddViewForFloor
 {
     UIView* viewFloor = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height)];
-    [viewFloor setBackgroundColor:[UIColor whiteColor]];
+    [viewFloor setBackgroundColor:[UIColor greenColor]];
     
     UISwipeGestureRecognizer* leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(LeftSwipeAction)];
     [leftSwipe setDirection:(UISwipeGestureRecognizerDirectionLeft)];
@@ -109,9 +113,6 @@
     [rightSwipe setDirection:(UISwipeGestureRecognizerDirectionRight)];
     
     [viewFloor addGestureRecognizer:rightSwipe];
-    //leftGesture.delegate = self;
-    // init icon at here
-    //--------
     [_floorViewArr addObject:viewFloor];
 }
 
@@ -134,22 +135,22 @@
 -(void)MoveView
 {
     NSLog(@"current View State: %d",_viewState);
-    CGPoint _centerViewPoint = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+    CGPoint _centerViewPoint = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2+20);
     switch (_viewState) {
         case -1:
-            _centerViewPoint = CGPointMake(self.view.frame.size.width/2 + 150, self.view.frame.size.height/2);
+            _centerViewPoint = CGPointMake(self.view.frame.size.width/2 + 150, self.view.frame.size.height/2+20);
             break;
         case 0:
             
             break;
         case 1:
             
-            _centerViewPoint = CGPointMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height/2);
+            _centerViewPoint = CGPointMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height/2+20);
             break;            
         default:
             break;
     }
-    [UIView animateWithDuration:0.75 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         _currentView.center = _centerViewPoint;
     }];
 }
@@ -167,7 +168,8 @@
     }
     else
     {
-        NSLog(@"FLOOR TABLE");
+        1 == 1;
+        //[self.view bringSubviewToFront:[_floorViewArr objectAtIndex:indexPath.row]];
     }
 }
 
@@ -218,9 +220,27 @@
 
 
 - (IBAction)AddFloor:(id)sender {
-    [_floorArr addObject:_floorField.text];
+    [_floorField resignFirstResponder];
+    [data insertToFloorWithName:_floorField.text];
+    _floorArr = [data getFloorList];
     [_floorField setText:@""];
     [_floorAdd setEnabled:NO];
+    [self AddViewForFloor];
     [_floorTable reloadData];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag == FLOOR_TABLE && editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [data removeFloorWithName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_floorViewArr removeObjectAtIndex:indexPath.row];
+    }
 }
 @end

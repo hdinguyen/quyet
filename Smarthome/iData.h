@@ -15,7 +15,7 @@
 	NSString *sql;
     NSSQLite *sqlite;
 }
-
++(id)shareInstance;
 -(id)initDataAccess;
 -(BOOL)createEditableCopyOfDatabaseIfNeeded;
 -(void)test;
