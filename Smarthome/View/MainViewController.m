@@ -66,7 +66,7 @@
     _currentTouch = nil;
     [_floorAdd setEnabled:NO];
     
-    _colorTmp = [[NSArray alloc]initWithObjects:[UIColor blackColor],[UIColor blueColor], [UIColor whiteColor], nil];
+    //_colorTmp = [[NSArray alloc]initWithObjects:[UIColor blackColor],[UIColor blueColor], [UIColor whiteColor], nil];
     iColor = 0;
     return self;
 }
@@ -101,8 +101,8 @@
 
 -(void)AddViewForFloor
 {
-    UIView* viewFloor = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height)];
-    [viewFloor setBackgroundColor:[UIColor greenColor]];
+    UIView* viewFloor = [[UIView alloc]initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height)];
+    [viewFloor setBackgroundColor:[UIColor whiteColor]];
     
     UISwipeGestureRecognizer* leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(LeftSwipeAction)];
     [leftSwipe setDirection:(UISwipeGestureRecognizerDirectionLeft)];
@@ -168,9 +168,13 @@
     }
     else
     {
-        1 == 1;
-        //[self.view bringSubviewToFront:[_floorViewArr objectAtIndex:indexPath.row]];
+        [_currentView removeFromSuperview];
+        _currentView = [_floorViewArr objectAtIndex:indexPath.row];
+        _viewState = 0;
+        [self MoveView];
+        [self.view addSubview:_currentView];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
