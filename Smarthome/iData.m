@@ -8,6 +8,9 @@
 
 #import "iData.h"
 #import <sqlite3.h>
+#import "iCon.h"
+#import "Cood.h"
+#import "floor.h"
 
 @implementation iData
 
@@ -126,8 +129,77 @@
     [sqlite executeQuery:sql];
 }
 
+-(NSInteger)getFloorID:(NSString*)name
+{
+    sql = [NSString stringWithFormat:@"select * from FLOOR where FLOOR_NAME = '%@'",name];
+    NSArray* sqlResult = [sqlite executeQuery:sql];
+    NSInteger lastId = -1;
+    if (sqlResult > 0)
+    {
+        NSDictionary *lastDicItem = [sqlResult objectAtIndex:0];
+        lastId = [[lastDicItem valueForKey:@"ID"] intValue];
+    }
+    return lastId;
+}
+
+-(NSInteger)getIconID:(NSString*)name
+{
+    sql = [NSString stringWithFormat:@"select * from ITEM where ITEM_NAME = '%@'",name];
+    NSArray* sqlResult = [sqlite executeQuery:sql];
+    NSInteger lastId = -1;
+    if (sqlResult > 0)
+    {
+        NSDictionary *lastDicItem = [sqlResult objectAtIndex:0];
+        lastId = [[lastDicItem valueForKey:@"ID"] intValue];
+    }
+    return lastId;
+}
+
 -(void)addNewIcon:(NSString *)iconName toFloor:(NSString *)floorName atPosition:(CGPoint)centerPoint
 {
-    //sql = [NSString stringWithFormat:@"insert into ",floorName];
+    sql = @"select * from COOD";
+    NSArray* sqlResult = [sqlite executeQuery:sql];
+    NSInteger lastId = 0;
+    if (sqlResult > 0)
+    {
+        NSDictionary *lastDicItem = [sqlResult objectAtIndex:[sqlResult count] - 1];
+        lastId = [[lastDicItem valueForKey:@"ID"] intValue];
+    }
+    
+    NSInteger floorId = [self getFloorID:floorName];
+    NSInteger iconId = [self getIconID:iconName];
+    
+    if (floorId < 0 || iconId < 0)
+    {
+        NSLog(@"Wrong data");
+        return;
+    }
+    sql = [NSString stringWithFormat:@"insert into COOD(ID, FLOOR_NAME, ITEM_NAME, X_CENTER, Y_CENTER, PORT, VALUE) values (%d,'%@','%@',%f,%f, '', 0.0)",lastId, floorName, iconName, centerPoint.x, centerPoint.y];
+    [sqlite executeQuery:sql];
+    NSLog(@"Add icon to floor success");
+}
+
+-(NSArray*)getIconListOfFloor:(NSString*)floorName
+{
+    sql = [NSString stringWithFormat:@"Select * from COOD where ID_FLOOR = '%@'", floorName];
+    NSArray* sqlResult = [sqlite executeQuery:sql];
+    
+    NSMutableArray* returnArr = [[NSMutableArray alloc]init];
+    
+    NSString* iconName;
+    NSString* port;
+    NSString* value;
+    float xCenter = 0.0;
+    float yCenter = 0.0;
+    for (NSDictionary *dic in sqlResult)
+    {
+        iconName = [dic objectForKey:@"ITEM_NAME"] ;
+        xCenter = [[dic objectForKey:@"X_CENTER"] floatValue];
+        yCenter = [[dic objectForKey:@"Y_CENTER"] floatValue];
+        port = [dic objectForKey:@"PORT"];
+        value = [dic objectForKey:@"VALUE"];
+        [returnArr addObject:[[Cood alloc]initCoodWithIcon:iconName centerPoint:CGPointMake(xCenter, yCenter) Port:port Value:value]];
+    }
+    return returnArr;
 }
 @end

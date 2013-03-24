@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "iData.h"
+#import "iCon.h"
 
 enum {
     FLOOR_TABLE = 0,
@@ -20,11 +21,11 @@ enum {
     UITableView* _itemTable;
     NSMutableArray* _floorViewArr;
     NSArray* _floorArr;
-    NSMutableArray* _itemArr;
+    NSArray* _itemArr;
     NSMutableArray* _iconArr;
     UIView* _currentView;
     NSMutableArray* _iconAddInScreen;
-    UIImageView* _currentTouch;
+    iCon* _currentTouch;
     int _viewState;
     
     iData* data;

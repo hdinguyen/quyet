@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "floor.h"
 
 @interface MainViewController ()
 
@@ -52,8 +53,8 @@
     [self.view addSubview:_itemTable];
     
     _floorArr = [data getFloorList];
-    _itemArr = [[NSMutableArray alloc]initWithObjects:@"Den 01", @"Den 02", @"Quat", @"Cua", nil];
-    _iconArr = [[NSMutableArray alloc]initWithObjects:@"lighthub.png",@"light.png",@"door.png",@"fan.png", nil];
+    _itemArr = [data getItemList];
+    _iconArr = [[NSMutableArray alloc]initWithObjects:@"lighthub.png",@"light.png",@"fan.png",@"door.png", nil];
     _floorViewArr = [[NSMutableArray alloc]init];
     for (int i = 0; i < _floorArr.count; ++i) {
         [self AddViewForFloor];
@@ -99,21 +100,17 @@
     return cell;
 }
 
--(void)AddViewForFloor
+-(void)AddViewForFloor:(NSString*) floorName;
 {
-    UIView* viewFloor = [[UIView alloc]initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height)];
-    [viewFloor setBackgroundColor:[UIColor whiteColor]];
-    
     UISwipeGestureRecognizer* leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(LeftSwipeAction)];
     [leftSwipe setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    
-    [viewFloor addGestureRecognizer:leftSwipe];
     
     UISwipeGestureRecognizer* rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(RightSwipeAction)];
     [rightSwipe setDirection:(UISwipeGestureRecognizerDirectionRight)];
     
-    [viewFloor addGestureRecognizer:rightSwipe];
-    [_floorViewArr addObject:viewFloor];
+    Floor* floor = [[Floor alloc]initFloorWithFrame:CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height) background:nil Name:floorName Gesture:[NSArray arrayWithObjects:leftSwipe, rightSwipe, nil]];
+    [_floorViewArr addObject:floor];
+    [self.view addSubview:floor.view];
 }
 
 -(void)LeftSwipeAction
@@ -159,10 +156,13 @@
 {
     if (tableView.tag == ITEM_TABLE)
     {
-        UIImageView* imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[_iconArr objectAtIndex:indexPath.row]]];
-        imgView.center = CGPointMake(100, 100);
-        [_currentView addSubview:imgView];
-        [_iconAddInScreen addObject:imgView];
+        iCon* icon = [[iCon alloc]init];
+        icon.img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[_iconArr objectAtIndex:indexPath.row]]];
+        icon.img.center = CGPointMake(100, 100);
+        //icon.name =
+        [_currentView addSubview:icon.img];
+        [_iconAddInScreen addObject:icon];
+        [data addNewIcon:icon.name toFloor:_currentView atPosition:icon.img.center];
         _viewState = 0;
         [self MoveView];
     }
@@ -183,9 +183,9 @@
     //[_floorField resignFirstResponder];
     UITouch* touch = [[event allTouches] anyObject];
     CGPoint touchPoint = [touch locationInView:touch.view];
-    for (UIImageView* iconView in _iconAddInScreen)
+    for (iCon* iconView in _iconAddInScreen)
     {
-        if (CGRectContainsPoint([iconView frame], touchPoint))
+        if (CGRectContainsPoint([iconView.img frame], touchPoint))
         {
             _currentTouch = iconView;
         }
@@ -198,12 +198,13 @@
     {
         UITouch* touch = [[event allTouches] anyObject];
         CGPoint touchPoint = [touch locationInView:touch.view];
-        _currentTouch.center = touchPoint;
+        _currentTouch.img.center = touchPoint;
     }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    //data addNewIcon:<#(NSString *)#> toFloor:<#(NSString *)#> atPosition:<#(CGPoint)#>
     _currentTouch = nil;
 }
 
@@ -227,9 +228,9 @@
     [_floorField resignFirstResponder];
     [data insertToFloorWithName:_floorField.text];
     _floorArr = [data getFloorList];
+    [self AddViewForFloor:_floorField.text];
     [_floorField setText:@""];
     [_floorAdd setEnabled:NO];
-    [self AddViewForFloor];
     [_floorTable reloadData];
 }
 

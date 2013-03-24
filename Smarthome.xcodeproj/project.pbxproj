@@ -23,10 +23,13 @@
 		181D12C016EE264A00F9DB5F /* iCoreGUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D12BF16EE264A00F9DB5F /* iCoreGUIController.m */; };
 		1837718316F4CB500057AC88 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1837718216F4CB500057AC88 /* libsqlite3.0.dylib */; };
 		1837718616F4CBA60057AC88 /* iData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1837718516F4CBA60057AC88 /* iData.m */; };
+		1842223216FF60FB00C71AC0 /* floor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842223116FF60FB00C71AC0 /* floor.m */; };
+		1842223516FF67B800C71AC0 /* Cood.m in Sources */ = {isa = PBXBuildFile; fileRef = 1842223416FF67B800C71AC0 /* Cood.m */; };
 		18C20ADB16F2072E00A353C3 /* lighthub.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADA16F2072E00A353C3 /* lighthub.png */; };
 		18C20ADD16F2073F00A353C3 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADC16F2073F00A353C3 /* light.png */; };
 		18C20ADF16F2074E00A353C3 /* fan.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20ADE16F2074E00A353C3 /* fan.png */; };
 		18C20AE116F2075B00A353C3 /* door.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C20AE016F2075B00A353C3 /* door.png */; };
+		18FB109616FE08B200FBAFE5 /* iCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FB109516FE08B200FBAFE5 /* iCon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,10 +57,16 @@
 		1837718216F4CB500057AC88 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		1837718416F4CBA60057AC88 /* iData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iData.h; sourceTree = "<group>"; };
 		1837718516F4CBA60057AC88 /* iData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iData.m; sourceTree = "<group>"; };
+		1842223016FF60FB00C71AC0 /* floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = floor.h; sourceTree = "<group>"; };
+		1842223116FF60FB00C71AC0 /* floor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = floor.m; sourceTree = "<group>"; };
+		1842223316FF67B800C71AC0 /* Cood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cood.h; sourceTree = "<group>"; };
+		1842223416FF67B800C71AC0 /* Cood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cood.m; sourceTree = "<group>"; };
 		18C20ADA16F2072E00A353C3 /* lighthub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lighthub.png; sourceTree = "<group>"; };
 		18C20ADC16F2073F00A353C3 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
 		18C20ADE16F2074E00A353C3 /* fan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fan.png; sourceTree = "<group>"; };
 		18C20AE016F2075B00A353C3 /* door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door.png; sourceTree = "<group>"; };
+		18FB109416FE08B200FBAFE5 /* iCon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCon.h; sourceTree = "<group>"; };
+		18FB109516FE08B200FBAFE5 /* iCon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +161,12 @@
 				1837718416F4CBA60057AC88 /* iData.h */,
 				1837718516F4CBA60057AC88 /* iData.m */,
 				1800351E16F8BD3200336EA3 /* SmartHome.db */,
+				18FB109416FE08B200FBAFE5 /* iCon.h */,
+				18FB109516FE08B200FBAFE5 /* iCon.m */,
+				1842223016FF60FB00C71AC0 /* floor.h */,
+				1842223116FF60FB00C71AC0 /* floor.m */,
+				1842223316FF67B800C71AC0 /* Cood.h */,
+				1842223416FF67B800C71AC0 /* Cood.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -242,6 +257,9 @@
 				181D12C016EE264A00F9DB5F /* iCoreGUIController.m in Sources */,
 				1837718616F4CBA60057AC88 /* iData.m in Sources */,
 				1800351D16F8B8D400336EA3 /* NSSQLite.m in Sources */,
+				18FB109616FE08B200FBAFE5 /* iCon.m in Sources */,
+				1842223216FF60FB00C71AC0 /* floor.m in Sources */,
+				1842223516FF67B800C71AC0 /* Cood.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
