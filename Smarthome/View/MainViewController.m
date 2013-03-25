@@ -57,11 +57,11 @@
     _iconArr = [[NSMutableArray alloc]initWithObjects:@"lighthub.png",@"light.png",@"fan.png",@"door.png", nil];
     _floorViewArr = [[NSMutableArray alloc]init];
     for (int i = 0; i < _floorArr.count; ++i) {
-        [self AddViewForFloor];
+        [self AddViewForFloor:[_floorArr objectAtIndex:i]];
     }
     NSLog(@"count: %d", [_floorViewArr count]);
-    _currentView = [_floorViewArr objectAtIndex:0];
-    [self.view addSubview:_currentView];
+    //_currentView = [_floorViewArr objectAtIndex:0];
+    //[self.view addSubview:_currentView.view];
     _iconAddInScreen = [[NSMutableArray alloc]init];
     _viewState = 0;
     _currentTouch = nil;
@@ -108,13 +108,19 @@
     UISwipeGestureRecognizer* rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(RightSwipeAction)];
     [rightSwipe setDirection:(UISwipeGestureRecognizerDirectionRight)];
     
-    Floor* floor = [[Floor alloc]initFloorWithFrame:CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height) background:nil Name:floorName Gesture:[NSArray arrayWithObjects:leftSwipe, rightSwipe, nil]];
+    Floor* floor = [[Floor alloc]initFloorWithFrame:(CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height)) ImageBackground:nil Name:floorName Gesture:[NSArray arrayWithObjects:leftSwipe, rightSwipe, nil]];
+    if (_currentView.view)
+    {
+        [_currentView.view removeFromSuperview];
+    }
     [_floorViewArr addObject:floor];
-    [self.view addSubview:floor.view];
+    _currentView = [_floorViewArr objectAtIndex:(_floorViewArr.count - 1) ];
+    [self.view addSubview:_currentView.view];
 }
 
 -(void)LeftSwipeAction
 {
+    _currentTouch = nil;
     if (_viewState == 1)
         return;
         ++_viewState;
@@ -123,6 +129,7 @@
 
 -(void)RightSwipeAction
 {
+    _currentTouch = nil;
     if (_viewState == -1)
         return;
     --_viewState;
@@ -148,7 +155,7 @@
             break;
     }
     [UIView animateWithDuration:0.25 animations:^{
-        _currentView.center = _centerViewPoint;
+        _currentView.view.center = _centerViewPoint;
     }];
 }
 
@@ -160,19 +167,19 @@
         icon.img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:[_iconArr objectAtIndex:indexPath.row]]];
         icon.img.center = CGPointMake(100, 100);
         //icon.name =
-        [_currentView addSubview:icon.img];
+        [_currentView.view addSubview:icon.img];
         [_iconAddInScreen addObject:icon];
-        [data addNewIcon:icon.name toFloor:_currentView atPosition:icon.img.center];
+        [data addNewIcon:icon.name toFloor:_currentView.name atPosition:icon.img.center];
         _viewState = 0;
         [self MoveView];
     }
     else
     {
-        [_currentView removeFromSuperview];
+        [_currentView.view removeFromSuperview];
         _currentView = [_floorViewArr objectAtIndex:indexPath.row];
         _viewState = 0;
         [self MoveView];
-        [self.view addSubview:_currentView];
+        [self.view addSubview:_currentView.view];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

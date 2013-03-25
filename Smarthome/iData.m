@@ -165,7 +165,7 @@
         NSDictionary *lastDicItem = [sqlResult objectAtIndex:[sqlResult count] - 1];
         lastId = [[lastDicItem valueForKey:@"ID"] intValue];
     }
-    
+    /*
     NSInteger floorId = [self getFloorID:floorName];
     NSInteger iconId = [self getIconID:iconName];
     
@@ -174,6 +174,7 @@
         NSLog(@"Wrong data");
         return;
     }
+     */
     sql = [NSString stringWithFormat:@"insert into COOD(ID, FLOOR_NAME, ITEM_NAME, X_CENTER, Y_CENTER, PORT, VALUE) values (%d,'%@','%@',%f,%f, '', 0.0)",lastId, floorName, iconName, centerPoint.x, centerPoint.y];
     [sqlite executeQuery:sql];
     NSLog(@"Add icon to floor success");

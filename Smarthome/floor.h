@@ -15,6 +15,6 @@
 @property (nonatomic, retain) NSString* background;
 @property (nonatomic, retain) UIView* view;
 
--(id)initFloorWithFrame:(CGRect)frame background:(NSString*)img Name:(NSString*)name Gesture:(NSArray*) gestureArr;
+-(id)initFloorWithFrame:(CGRect)frame ImageBackground:(NSString*)img Name:(NSString*)name Gesture:(NSArray*) gestureArr;
 
 @end

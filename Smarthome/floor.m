@@ -10,16 +10,20 @@
 
 @implementation Floor
 
--(id)initFloorWithFrame:(CGRect)frame background:(NSString*)img Name:(NSString*)name Gesture:(NSArray*) gestureArr
+-(id)initFloorWithFrame:(CGRect)frame ImageBackground:(NSString*)img Name:(NSString*)name Gesture:(NSArray*) gestureArr
 {
     self = [super init];
     _view = [[UIView alloc]initWithFrame:frame];
+    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 20)];
+    label.text = name;
+    //[label setBackgroundColor:[UIColor blackColor]];
+    [_view addSubview:label];
     if (img) {
         _view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:img]];
     }
     else
     {
-        [_view setBackgroundColor:[UIColor whiteColor]];
+        [_view setBackgroundColor:[UIColor greenColor]];
     }
     _name = name;
     for (UIGestureRecognizer* gesture in gestureArr)
